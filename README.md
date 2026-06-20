@@ -16,6 +16,7 @@ service accounts, databases, API tokens, and anything you need to memorise.
 2. Pick a **mode** (Simple → High Security, Custom, or Passphrase).
 3. Set **QTY** and click **Generate**.
 4. Click any masked card to reveal/copy, or use **Copy All** / **Export .txt**.
+5. CTRL + SPACE Unmasks all passwords/passphrases.
 
 That's it. No install, no config files.
 
