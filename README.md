@@ -21,6 +21,7 @@ That's it. No install, no config files.
 
 ---
 <img width="1989" height="987" alt="image" src="https://github.com/user-attachments/assets/6aa9850c-2378-437b-bbb0-7f24617d24cd" />
+
 ---
 
 ## Security model
