@@ -219,7 +219,6 @@ In Awesome Mode the **Generate** button's label changes to reflect flavor state:
 
 ### Other Awesome-only behavior
 
-- **Syntax Overdrive** (`Ctrl + Shift + Backspace`) also spins the flavor,
   Mutation, and Synergy Bonus cards through its 10 generations before locking.
 - **Lore egg** — hover the Status chip for ~2 seconds at **Maximum** intensity to
   surface a lore one-liner.
