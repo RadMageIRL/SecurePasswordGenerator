@@ -4,9 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Secure Password Generator - Documentation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg-page:#111111; --bg:#1a1a1a; --surface:#242424; --surface-2:#2e2e2e;
@@ -15,7 +12,7 @@
   --accent:#cc2229; --accent-hover:#e8282f; --accent-text:#ff5a5f;
   --accent-dim:rgba(204,34,41,0.12); --accent-border:rgba(204,34,41,0.35);
   --good-text:#66bb6a; --warn-text:#ffa040; --info-text:#64b5f6;
-  --font-ui:'DM Sans',sans-serif; --font-mono:'DM Mono','Consolas',monospace;
+  --font-ui:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; --font-mono:ui-monospace, "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   --radius:6px; --radius-lg:10px;
 }
 *{box-sizing:border-box;}
@@ -227,14 +224,14 @@ footer{border-top:1px solid var(--border);background:var(--bg);}
             <tr><td class="lead">Unbiased selection</td><td>The internal <code>secureRand()</code> uses rejection sampling, so there is no modulo bias - even across large word pools.</td></tr>
             <tr><td class="lead">Zero persistence</td><td>No <code>localStorage</code>, no <code>sessionStorage</code>, no cookies, no server calls. Passwords live only in memory.</td></tr>
             <tr><td class="lead">Client-side only</td><td>The entire app is one HTML file. Nothing is transmitted or logged.</td></tr>
-            <tr><td class="lead">Integrity hash</td><td>The footer shows a live <strong>SHA-256</strong> of the page's own source. Publish that hash internally so users can verify the file hasn't been tampered with.</td></tr>
-            <tr><td class="lead">Clipboard hygiene</td><td>The clipboard pill lights when a password is copied, can be clicked to clear, and auto-clears after 8 seconds.</td></tr>
+            <tr><td class="lead">Verifying a download</td><td>The project README publishes the file's <strong>SHA-256</strong>. Check a downloaded copy with <code>certutil -hashfile Secure-Password-Generator.html SHA256</code> (Windows) or <code>shasum -a 256 Secure-Password-Generator.html</code>.</td></tr>
+            <tr><td class="lead">Clipboard hygiene</td><td>The clipboard pill lights when a password is copied, can be clicked to clear, and clears after 8 seconds. Browsers only allow clearing while the tab has focus; when they refuse, the page says so.</td></tr>
           </tbody>
         </table>
       </div>
       <div class="card note">
         <div class="ct">Air-gapped copies</div>
-        <p>The only outbound request the file makes is to Google Fonts for the display typeface. Remove the <code>&lt;link&gt;</code> tags in <code>&lt;head&gt;</code> for a fully zero-network copy.</p>
+        <p>The file makes no network requests at all. It uses the system's own fonts, so it works air-gapped as it is.</p>
       </div>
     </section>
 
@@ -286,7 +283,8 @@ footer{border-top:1px solid var(--border);background:var(--bg);}
       <p>Word-based credentials from the <strong>EFF Large Wordlist</strong> (7,776 words, ~12.92 bits/word). The default is <strong>strict EFF Diceware</strong> - space-separated, no transforms - the recommended mode for any credential you must type or memorize.</p>
       <ul class="clean">
         <li><strong>Pool Depth</strong> - 1,000 / 2,000 / 4,000 / 7,776 words. Smaller pools read more easily; the full pool gives full EFF entropy.</li>
-        <li><strong>Verbosity</strong> - Default (3–4), Extra (5–7), Advanced (7–9), Maximum (10–14) words.</li>
+        <li><strong>Verbosity</strong> - Simple (2, 3 or 4), Default (3–4), Extra (5–7), Advanced (7–9), Maximum (10–14) words.</li>
+        <li><strong>Simple</strong> - a fixed word count with your choice of separators (space, <code>-</code>, <code>_</code>, <code>.</code>, <code>*</code>, <code>/</code>, <code>\</code>; switch on several to mix them, one picked at random per gap) and an optional two-digit number after each word, which adds log2(100) bits per word.</li>
         <li><strong>Syntax</strong> - structures output as Subject·Verb·Object or Adjective·Noun for more pronounceable phrases.</li>
         <li><strong>Additional separators &amp; transforms</strong> - off = strict Diceware; on = varied delimiters and transforms driven by Intensity.</li>
         <li><strong>Intensity</strong> - how aggressive the transforms and delimiter variety get in non-strict mode.</li>
@@ -402,7 +400,7 @@ footer{border-top:1px solid var(--border);background:var(--bg);}
         <li>Generate credentials for accounts, service accounts, API tokens, and other systems.</li>
         <li>Store generated values in a password manager.</li>
         <li>Never share passwords over unencrypted channels (email, chat).</li>
-        <li>Verify the footer SHA-256 against the published value before use on sensitive systems.</li>
+        <li>Verify a downloaded copy's SHA-256 against the value published in the README before use on sensitive systems.</li>
         <li>Download offline copies only from this project's GitHub repository.</li>
       </ul>
       <p>Questions or problems: open an issue on GitHub or email radmageirl@radmagelabs.com.</p>
@@ -414,7 +412,7 @@ footer{border-top:1px solid var(--border);background:var(--bg);}
       <p class="sec-sub"></p>
       <ul class="clean">
         <li><strong>Single file.</strong> All HTML, CSS, and JS - including the full 7,776-word EFF wordlist - are inline. Nothing else is required to run it.</li>
-        <li><strong>No dependencies / no build.</strong> Pure vanilla JS; works offline once fonts are cached or the font links are removed.</li>
+        <li><strong>No dependencies / no build.</strong> Pure vanilla JS with no network requests; works offline as it is.</li>
         <li><strong>Browser support.</strong> Any modern browser with the Web Crypto API (<code>crypto.getRandomValues</code>, <code>crypto.subtle</code>).</li>
         <li><strong>Wordlist source.</strong> EFF Large Wordlist - <a href="https://www.eff.org/dice" target="_blank" rel="noopener">eff.org/dice</a> - CC BY 3.0 US.</li>
       </ul>

@@ -35,12 +35,30 @@ That's it. No install, no config files.
 | **Unbiased selection** | `secureRand()` uses rejection sampling so there is no modulo bias, even for large word pools. |
 | **Zero persistence** | No `localStorage`, no `sessionStorage`, no cookies, no server calls. Passwords live only in memory. |
 | **Client-side only** | The entire app is one HTML file. Nothing is transmitted or logged. |
-| **Integrity hash** | The footer shows a live **SHA-256** of the page's own source. Publish that hash internally so users can verify the file hasn't been tampered with. |
-| **Clipboard hygiene** | The clipboard indicator pill lights when a password is copied, can be clicked to clear, and auto-clears after 8 seconds. |
+| **Verifying a download** | This README publishes the file's SHA-256; see [Verifying a download](#verifying-a-download). |
+| **Clipboard hygiene** | The clipboard indicator pill lights when a password is copied, can be clicked to clear, and clears after 8 seconds. Browsers only allow clearing while the tab has focus; when they refuse, the page says so. |
 
-The only outbound requests the file makes are to Google Fonts for the display
-typeface. Remove the `<link>` tags in `<head>` if you need a fully air-gapped,
-zero-network copy.
+The file makes no network requests at all. It uses the system's own fonts, so it
+works air-gapped as it is.
+
+---
+
+## Verifying a download
+
+The SHA-256 of the current `Secure-Password-Generator.html` is:
+
+```
+c42086899d140308e72cfec161cbcbdf3964d4bb87138e3634e301c7dc9ac5ae
+```
+
+Check a downloaded copy before using it on sensitive systems:
+
+- Windows: `certutil -hashfile Secure-Password-Generator.html SHA256`
+- macOS or Linux: `shasum -a 256 Secure-Password-Generator.html`
+
+Download the file with GitHub's **Download raw file** button. A Git checkout on
+Windows can convert line endings, which changes the hash. The page does not show
+a hash of itself, because a modified copy could display any value it liked.
 
 ---
 
@@ -95,8 +113,12 @@ credential you have to type or remember.
 
 - **Pool Depth** - 1,000 / 2,000 / 4,000 / 7,776 words. Smaller pools are easier
   to read; the full 7,776-word pool gives the full EFF entropy.
-- **Verbosity** - word count per phrase: Default (3–4), Extra (5–7),
-  Advanced (7–9), Maximum (10–14).
+- **Verbosity** - word count per phrase: Simple (2, 3 or 4), Default (3–4),
+  Extra (5–7), Advanced (7–9), Maximum (10–14).
+- **Simple** - a fixed word count with your choice of separators (space, `-`, `_`,
+  `.`, `*`, `/`, `\`; switch on several to mix them, one picked at random per
+  gap) and an optional two-digit number after each word, which adds log2(100) bits
+  per word.
 - **Syntax** - when on, structures output as Subject·Verb·Object or
   Adjective·Noun for more pronounceable phrases (draws from role-tagged pools).
 - **Additional separators & transforms** - off = strict Diceware; on = varied
@@ -239,8 +261,8 @@ weaken the underlying entropy.
 - Generate credentials for accounts, service accounts, API tokens, and other systems.
 - Store generated values in a password manager.
 - Never share passwords over unencrypted channels (email, chat).
-- Verify the footer SHA-256 against the published value before use on sensitive
-  systems.
+- Verify a downloaded copy's SHA-256 against [the published value](#verifying-a-download)
+  before use on sensitive systems.
 - Download offline copies only from this project's GitHub repository.
 
 Questions or problems: open an issue on GitHub or email radmageirl@radmagelabs.com.
@@ -251,8 +273,8 @@ Questions or problems: open an issue on GitHub or email radmageirl@radmagelabs.c
 
 - **Single file.** All HTML, CSS, and JS (including the full 7,776-word EFF
   wordlist) are inline. Nothing else is required to run it.
-- **No dependencies / no build.** Pure vanilla JS; works offline once fonts are
-  cached or the font links are removed.
+- **No dependencies / no build.** Pure vanilla JS with no network requests; works
+  offline as it is.
 - **Browser support.** Any modern browser with the Web Crypto API
   (`crypto.getRandomValues`, `crypto.subtle`).
 - **Wordlist source.** EFF Large Wordlist - eff.org/dice - CC BY 3.0 US.
