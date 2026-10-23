@@ -1,12 +1,15 @@
 # Secure Password Generator
 
 A single-file, client-side password and passphrase generator. Everything runs in
-the browser — no build step, no dependencies, no network calls, no storage.
+the browser - no build step, no dependencies, no network calls, no storage.
 Open `Secure-Password-Generator.html` in any modern browser and it works.
+
+Use it online at [radmagelabs.com/password](https://radmagelabs.com/password/), or download the
+file and run it offline.
 
 Generated values exist only in page memory and are gone the moment the tab is
 closed. The tool is built for generating strong credentials for work accounts,
-service accounts, databases, API tokens, and anything you need to memorise.
+service accounts, databases, API tokens, and anything you need to memorize.
 
 ---
 
@@ -54,7 +57,7 @@ class, then filling the rest from the combined pool and shuffling.
 | **Medium** | 16 | A–Z, a–z, 0–9, `! @ # $ % ^ & * - _ + =` |
 | **Complex** | 24 | adds `( ) [ ] { } < > ? / \|` |
 | **Extended** | 32 | adds `~ \`` |
-| **High Security** | 64 | adds `: ;` — maximum density and length |
+| **High Security** | 64 | adds `: ;` - maximum density and length |
 
 ### Custom
 
@@ -64,9 +67,9 @@ constraints.
 **Character classes:** Uppercase, Lowercase, Numbers, Symbols (toggle any on/off).
 
 **Constraints:**
-- *Starts with letter* — first character is always a letter.
-- *No adjacent repeats* — no character appears twice in a row.
-- *Min 3 of each class* — guarantees at least 3 chars from each enabled class.
+- *Starts with letter* - first character is always a letter.
+- *No adjacent repeats* - no character appears twice in a row.
+- *Min 3 of each class* - guarantees at least 3 chars from each enabled class.
 
 **Built-in presets** (one click sets length, classes, filters, and constraints):
 
@@ -84,21 +87,21 @@ constraints.
 ### Passphrase
 
 Word-based credentials from the **EFF Large Wordlist** (7,776 words,
-CC BY 3.0 US, ~12.92 bits per word). The default is **strict EFF Diceware** —
-space-separated, no transforms — which is the recommended mode for any
+CC BY 3.0 US, ~12.92 bits per word). The default is **strict EFF Diceware** -
+space-separated, no transforms - which is the recommended mode for any
 credential you have to type or remember.
 
 **Passphrase options:**
 
-- **Pool Depth** — 1,000 / 2,000 / 4,000 / 7,776 words. Smaller pools are easier
+- **Pool Depth** - 1,000 / 2,000 / 4,000 / 7,776 words. Smaller pools are easier
   to read; the full 7,776-word pool gives the full EFF entropy.
-- **Verbosity** — word count per phrase: Default (3–4), Extra (5–7),
+- **Verbosity** - word count per phrase: Default (3–4), Extra (5–7),
   Advanced (7–9), Maximum (10–14).
-- **Syntax** — when on, structures output as Subject·Verb·Object or
+- **Syntax** - when on, structures output as Subject·Verb·Object or
   Adjective·Noun for more pronounceable phrases (draws from role-tagged pools).
-- **Additional separators & transforms** — off = strict Diceware; on = varied
+- **Additional separators & transforms** - off = strict Diceware; on = varied
   delimiters and word transforms driven by the Intensity slider.
-- **Intensity** — controls how aggressive the transforms and delimiter variety
+- **Intensity** - controls how aggressive the transforms and delimiter variety
   get in non-strict mode.
 
 ---
@@ -107,9 +110,9 @@ credential you have to type or remember.
 
 Two toggles apply on top of any mode:
 
-- **Non-Ambiguous** — strips visually confusable characters
+- **Non-Ambiguous** - strips visually confusable characters
   (`0 1 O I L l o | / \` space `. : ;`). Good for printed or read-aloud creds.
-- **CLI-Safe** — strips shell-hostile characters
+- **CLI-Safe** - strips shell-hostile characters
   (`? " ' \` $ \ | < > &` and space). Good for passwords pasted into terminals,
   connection strings, and config files.
 
@@ -147,7 +150,7 @@ Export .txt (timestamped file with full metadata header), and Mask Output.
 - **Strict EFF passphrase:** exactly `words × log2(7776)` ≈ 12.92 bits/word.
 - **Syntax-engine passphrase:** averages the `log2` of each role pool's size.
 - **Non-strict passphrase:** pool-size based, with small bonuses for
-  capitalisation and numeric suffixes.
+  capitalization and numeric suffixes.
 
 Resist-time labels run from "< 1 minute" up to "Practically forever" based on
 the bit count.
@@ -160,7 +163,7 @@ the bit count.
 |---|---|
 | `Ctrl + Enter` | Generate new passwords |
 | `Ctrl + Space` | Toggle mask on/off |
-| `Ctrl + Shift + Backspace` | Syntax Overdrive — 10 rapid generations, then lock |
+| `Ctrl + Shift + Backspace` | Syntax Overdrive - 10 rapid generations, then lock |
 | `Escape` | Close any open panel |
 
 ---
@@ -179,19 +182,19 @@ Click the **SECURED** pill (top-right), then type within 5 seconds:
 ## Awesome Mode (the fun part)
 
 A green-on-black "Cryptographic Flavor Generator" skin with animated Matrix rain,
-hidden behind Corp mode. By design, Corp mode leaks no hint that it exists — so
+hidden behind Corp mode. By design, Corp mode leaks no hint that it exists - so
 the entry points are documented here for maintainers.
 
 ### Entering & exiting
 
 | Method | Effect |
 |---|---|
-| `Ctrl + Alt + Shift` | Toggle Awesome Mode on/off — the keyboard route in and out |
+| `Ctrl + Alt + Shift` | Toggle Awesome Mode on/off - the keyboard route in and out |
 | Type `awesome` | Into the SECURED pill (within 5s of clicking it) to switch on |
 | Type `corp` | Into the SECURED pill to return to the standard Corp view |
 
 The `Ctrl + Alt + Shift` shortcut is intentionally absent from Corp mode's in-app
-About panel — it only surfaces in the reference once you're *already* in Awesome
+About panel - it only surfaces in the reference once you're *already* in Awesome
 Mode. It's listed here because this README is the full maintainer reference.
 
 ### Flavor System
@@ -201,46 +204,46 @@ your passphrases: D&D, Gibson, Star Trek, Star Wars, Cosmic Horror, Mythology,
 Linux Kernel, Corp Speak, Pirate, Dune, Dark Souls, Latin, Tolkien, Victorian,
 Arthurian, and Hacker.
 
-- **Conflicts** — incompatible flavor pairs trigger a conflict flash; click it to
+- **Conflicts** - incompatible flavor pairs trigger a conflict flash; click it to
   generate a *Mutation* card blending both pools.
-- **Synergies** — compatible pairs trigger a synergy flash; click it for a
+- **Synergies** - compatible pairs trigger a synergy flash; click it for a
   *Synergy Bonus* card with dual output.
-- **Intensity tiers** drive the rain speed/colour: stable → volatile → chaotic →
+- **Intensity tiers** drive the rain speed/color: stable → volatile → chaotic →
   breach.
-- **Insane Mode** — activate all 16 flavors at once for a special skin; the rain
+- **Insane Mode** - activate all 16 flavors at once for a special skin; the rain
   switches to INSANE/MODE characters.
 
 ### Generate button morphs
 
 In Awesome Mode the **Generate** button's label changes to reflect flavor state:
 
-- **Single flavor** — shows that theme's action word.
-- **Multiple flavors** — cycles through them.
-- **Conflict active** — shows `CONFLICT`.
-- **Synergy active** — shows `SYNERGIZE`.
-- **Both active** — a glitch cycle between states.
+- **Single flavor** - shows that theme's action word.
+- **Multiple flavors** - cycles through them.
+- **Conflict active** - shows `CONFLICT`.
+- **Synergy active** - shows `SYNERGIZE`.
+- **Both active** - a glitch cycle between states.
 
 ### Other Awesome-only behavior
 
   Mutation, and Synergy Bonus cards.
-- **Lore egg** — hover the Status chip for ~2 seconds at **Maximum** intensity to
+- **Lore egg** - hover the Status chip for ~2 seconds at **Maximum** intensity to
   surface a lore one-liner.
 
-This is cosmetic flavour layered on top of the same CSPRNG engine — it does not
+This is cosmetic flavor layered on top of the same CSPRNG engine - it does not
 weaken the underlying entropy.
 
 ---
 
 ## Acceptable use
 
-- Generate credentials for work accounts, service accounts, and internal systems.
-- Store generated values only in your approved password manager.
+- Generate credentials for accounts, service accounts, API tokens, and other systems.
+- Store generated values in a password manager.
 - Never share passwords over unencrypted channels (email, chat).
 - Verify the footer SHA-256 against the published value before use on sensitive
   systems.
-- Always use the copy distributed from your official internal source.
+- Download offline copies only from this project's GitHub repository.
 
-Questions: contact your IT Security team via the internal helpdesk.
+Questions or problems: open an issue on GitHub or email radmageirl@radmagelabs.com.
 
 ---
 
@@ -252,4 +255,4 @@ Questions: contact your IT Security team via the internal helpdesk.
   cached or the font links are removed.
 - **Browser support.** Any modern browser with the Web Crypto API
   (`crypto.getRandomValues`, `crypto.subtle`).
-- **Wordlist source.** EFF Large Wordlist — eff.org/dice — CC BY 3.0 US.
+- **Wordlist source.** EFF Large Wordlist - eff.org/dice - CC BY 3.0 US.
