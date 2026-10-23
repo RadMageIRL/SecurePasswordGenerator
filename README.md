@@ -48,7 +48,7 @@ works air-gapped as it is.
 The SHA-256 of the current `Secure-Password-Generator.html` is:
 
 ```
-c42086899d140308e72cfec161cbcbdf3964d4bb87138e3634e301c7dc9ac5ae
+d27d0d1d534d32e6cb55659559dbeaa5290bfc1776b3c305976b3c8d9b397a3e
 ```
 
 Check a downloaded copy before using it on sensitive systems:
