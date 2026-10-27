@@ -48,7 +48,7 @@ works air-gapped as it is.
 The SHA-256 of the current `Secure-Password-Generator.html` is:
 
 ```
-d27d0d1d534d32e6cb55659559dbeaa5290bfc1776b3c305976b3c8d9b397a3e
+b4e0cb818793099f8c66d52c37e59572492e065e617a6616bf7b0ed95bfef4df
 ```
 
 Check a downloaded copy before using it on sensitive systems:
@@ -122,9 +122,7 @@ credential you have to type or remember.
 - **Syntax** - when on, structures output as Subject·Verb·Object or
   Adjective·Noun for more pronounceable phrases (draws from role-tagged pools).
 - **Additional separators & transforms** - off = strict Diceware; on = varied
-  delimiters and word transforms driven by the Intensity slider.
-- **Intensity** - controls how aggressive the transforms and delimiter variety
-  get in non-strict mode.
+  delimiters and light word transforms.
 
 ---
 
@@ -230,8 +228,10 @@ Arthurian, and Hacker.
   generate a *Mutation* card blending both pools.
 - **Synergies** - compatible pairs trigger a synergy flash; click it for a
   *Synergy Bonus* card with dual output.
-- **Intensity tiers** drive the rain speed/color: stable → volatile → chaotic →
-  breach.
+- **Intensity** - an Awesome-only slider for how aggressive the transforms and
+  delimiter variety get in non-strict mode. Corp mode has no Intensity control
+  and always uses the default (Low). Its tiers also drive the rain speed/color:
+  stable → volatile → chaotic → breach.
 - **Insane Mode** - activate all 16 flavors at once for a special skin; the rain
   switches to INSANE/MODE characters.
 
