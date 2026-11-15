@@ -216,7 +216,8 @@ footer{border-top:1px solid var(--border);background:var(--bg);}
           <li>Open the HTML file in a browser (double-click, or serve it however you like).</li>
           <li>Pick a <strong>mode</strong> - Simple → High Security, Custom, or Passphrase.</li>
           <li>Set <strong>QTY</strong> and click <strong>Generate</strong>.</li>
-          <li>Click any masked card to reveal/copy, or use <strong>Copy All</strong> / <strong>Export .txt</strong>.</li>
+          <li>Click any card to copy it, or use <strong>Copy All</strong> / <strong>Export .txt</strong>.</li>
+          <li>Turn on <strong>Mask Output</strong> (off by default) to hide values on screen; <kbd>Ctrl + Space</kbd> toggles it.</li>
         </ul>
       </div>
     </section>
@@ -293,10 +294,13 @@ footer{border-top:1px solid var(--border);background:var(--bg);}
       <ul class="clean">
         <li><strong>Pool Depth</strong> - 1,000 / 2,000 / 4,000 / 7,776 words. Smaller pools read more easily; the full pool gives full EFF entropy.</li>
         <li><strong>Verbosity</strong> - Simple (2, 3 or 4), Default (3–4), Extra (5–7), Advanced (7–9), Maximum (10–14) words.</li>
-        <li><strong>Simple</strong> - a fixed word count with your choice of separators (space, <code>-</code>, <code>_</code>, <code>.</code>, <code>*</code>, <code>/</code>, <code>\</code>; switch on several to mix them, one picked at random per gap) and an optional two-digit number after each word, which adds log2(100) bits per word.</li>
+        <li><strong>Word Count</strong> - pick an exact count from the verbosity's range, or leave it on <strong>Random</strong> for a different count in each phrase. Simple has no Random; it uses the count you pick. Each verbosity keeps its own choice.</li>
+        <li><strong>Separator</strong> - space, <code>-</code>, <code>_</code>, <code>.</code>, <code>*</code>, <code>/</code> or <code>\</code>; switch on several to mix them, one picked at random per gap. Space is the default.</li>
+        <li><strong>Add numbers to words</strong> - an optional two-digit number after each word, which adds log2(100) bits per word.</li>
         <li><strong>Syntax</strong> - structures output as Subject·Verb·Object or Adjective·Noun for more pronounceable phrases.</li>
-        <li><strong>Additional separators &amp; transforms</strong> - off = strict Diceware; on = varied delimiters and light word transforms.</li>
+        <li><strong>Additional separators &amp; transforms</strong> - off = strict Diceware with the separator you pick; on = varied delimiters and light word transforms, which replace the Separator choice. Simple doesn't offer it.</li>
       </ul>
+      <p>Word Count, Separator and Add numbers to words work at every verbosity, from Simple to Maximum, and with Syntax on.</p>
     </section>
 
     <!-- 4 -->
@@ -335,7 +339,7 @@ footer{border-top:1px solid var(--border);background:var(--bg);}
         </table>
       </div>
       <p><strong>Card actions:</strong> click a card to copy it; click the eye to reveal a masked value; hold to peek. A <em>stale</em> badge appears when you change settings after generating.</p>
-      <p><strong>Toolbar:</strong> Generate, Copy All (unmasked), Clear, Export .txt (timestamped, with a full metadata header), and Mask Output. <code>Ctrl+P</code> / File → Print produces a clean credential sheet.</p>
+      <p><strong>Toolbar:</strong> Generate, Copy All (unmasked), Clear, Export .txt (timestamped, with a full metadata header), and Mask Output (off by default). <code>Ctrl+P</code> / File → Print produces a clean credential sheet.</p>
     </section>
 
     <!-- 6 -->

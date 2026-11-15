@@ -5,7 +5,7 @@ the browser - no build step, no dependencies, no network calls, no storage.
 Open `Secure-Password-Generator.html` in any modern browser and it works.
 
 Use it online at [radmagelabs.com/password](https://radmagelabs.com/password/), or download the
-file and run it offline.
+file and run it offline. What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
 
 Generated values exist only in page memory and are gone the moment the tab is
 closed. The tool is built for generating strong credentials for work accounts,
@@ -18,8 +18,9 @@ service accounts, databases, API tokens, and anything you need to memorize.
 1. Open the HTML file in a browser (double-click, or serve it however you like).
 2. Pick a **mode** (Simple → High Security, Custom, or Passphrase).
 3. Set **QTY** and click **Generate**.
-4. Click any masked card to reveal/copy, or use **Copy All** / **Export .txt**.
-5. CTRL + SPACE Unmasks all passwords/passphrases.
+4. Click any card to copy it, or use **Copy All** / **Export .txt**.
+5. Turn on **Mask Output** (off by default) to hide values on screen. CTRL + SPACE
+   toggles it.
 
 That's it. No install, no config files.
 
@@ -48,7 +49,7 @@ works air-gapped as it is.
 The SHA-256 of the current `Secure-Password-Generator.html` is:
 
 ```
-1fa54c9638fc7133d9fa7d07c308f4648d122e3ce641e1233f3183b588d1cfb7
+30ab96c74308971228a2035e14cec672e532c5d51aa4c8d39de94dbe44da4f34
 ```
 
 Check a downloaded copy before using it on sensitive systems:
@@ -115,14 +116,21 @@ credential you have to type or remember.
   to read; the full 7,776-word pool gives the full EFF entropy.
 - **Verbosity** - word count per phrase: Simple (2, 3 or 4), Default (3–4),
   Extra (5–7), Advanced (7–9), Maximum (10–14).
-- **Simple** - a fixed word count with your choice of separators (space, `-`, `_`,
-  `.`, `*`, `/`, `\`; switch on several to mix them, one picked at random per
-  gap) and an optional two-digit number after each word, which adds log2(100) bits
-  per word.
+- **Word Count** - pick an exact count from the verbosity's range, or leave it on
+  **Random** for a different count in each phrase. Simple has no Random; it uses
+  the count you pick. Each verbosity keeps its own choice.
+- **Separator** - space, `-`, `_`, `.`, `*`, `/` or `\`; switch on several to
+  mix them, one picked at random per gap. Space is the default.
+- **Add numbers to words** - an optional two-digit number after each word, which
+  adds log2(100) bits per word.
 - **Syntax** - when on, structures output as Subject·Verb·Object or
   Adjective·Noun for more pronounceable phrases (draws from role-tagged pools).
-- **Additional separators & transforms** - off = strict Diceware; on = varied
-  delimiters and light word transforms.
+- **Additional separators & transforms** - off = strict Diceware with the separator
+  you pick; on = varied delimiters and light word transforms, which replace the
+  Separator choice. Simple doesn't offer it.
+
+Word Count, Separator and Add numbers to words work at every verbosity, from
+Simple to Maximum, and with Syntax on.
 
 ---
 
@@ -156,7 +164,8 @@ value; hold to peek. A *stale* badge appears on cards when you change settings
 after generating, prompting a regenerate.
 
 **Toolbar actions:** Generate, Copy All (copies unmasked values), Clear,
-Export .txt (timestamped file with full metadata header), and Mask Output.
+Export .txt (timestamped file with full metadata header), and Mask Output (off
+by default).
 
 `Ctrl + P` / File → Print produces a clean credential sheet.
 
@@ -168,6 +177,7 @@ Export .txt (timestamped file with full metadata header), and Mask Output.
   small penalty for constraints (min-classes structure, starts-with-letter lead)
   and shows the deduction inline.
 - **Strict EFF passphrase:** exactly `words × log2(7776)` ≈ 12.92 bits/word.
+- **Add numbers to words:** adds `words × log2(100)` ≈ 6.64 bits per word on top.
 - **Syntax-engine passphrase:** averages the `log2` of each role pool's size.
 - **Non-strict passphrase:** pool-size based, with small bonuses for
   capitalization and numeric suffixes.
@@ -266,6 +276,8 @@ weaken the underlying entropy.
 - Download offline copies only from this project's GitHub repository.
 
 Questions or problems: open an issue on GitHub or email radmageirl@radmagelabs.com.
+If you'd like to support future projects, you can
+[buy me a coffee](https://buymeacoffee.com/radmageirl).
 
 ---
 
