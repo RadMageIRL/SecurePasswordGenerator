@@ -25,7 +25,7 @@ service accounts, databases, API tokens, and anything you need to memorize.
 That's it. No install, no config files.
 
 ---
-<img width="1989" height="987" alt="image" src="https://github.com/user-attachments/assets/6aa9850c-2378-437b-bbb0-7f24617d24cd" />
+![Secure Password Generator in Passphrase mode, showing the word count and separator options and five generated passphrases](assets/screenshot-corp.png)
 
 
 ## Security model
@@ -49,7 +49,7 @@ works air-gapped as it is.
 The SHA-256 of the current `Secure-Password-Generator.html` is:
 
 ```
-30ab96c74308971228a2035e14cec672e532c5d51aa4c8d39de94dbe44da4f34
+0ce9faf8bf0c73cc4fba94e750e31b3f5fe33165016cf1ac6439134247591284
 ```
 
 Check a downloaded copy before using it on sensitive systems:
@@ -214,6 +214,8 @@ Click the **SECURED** pill (top-right), then type within 5 seconds:
 A green-on-black "Cryptographic Flavor Generator" skin with animated Matrix rain,
 hidden behind Corp mode. By design, Corp mode leaks no hint that it exists - so
 the entry points are documented here for maintainers.
+
+![Awesome Mode: the green-on-black Cryptographic Flavor Generator with the Pirate flavor on and pirate-themed passphrases](assets/screenshot-awesome.png)
 
 ### Entering & exiting
 

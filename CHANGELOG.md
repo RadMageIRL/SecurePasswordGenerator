@@ -2,6 +2,17 @@
 
 Every version of Secure Password Generator and what changed in it, newest first. Dates are the day I released each one.
 
+## v1.1.2 (2026-11-17)
+
+Fixed
+- The regenerate button on a single card now works in Passphrase and Custom. Generate reuses the cards already on the page, and each card's button kept the mode it was first built in. After switching to Passphrase or Custom from another mode, the button called the wrong generator, hit an error and left the card unchanged. It now reads the mode at the moment it is pressed.
+
+Changed
+- The footer and the page's structured data show version 1.1.2.
+- The README shows current screenshots of the generator, one in the standard look and one in Awesome Mode.
+
+The random functions, the word lists and the password modes are unchanged.
+
 ## v1.1.1 (2026-11-15)
 
 Added
